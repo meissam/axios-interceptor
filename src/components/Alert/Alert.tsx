@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Styled from './styled';
+import * as Styled from './Alert.styled';
 import { AlertVarients } from '@/types';
 
 type AlertProps = {

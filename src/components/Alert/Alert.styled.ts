@@ -24,7 +24,7 @@ export const AlertWrapper = styled.div<AlertWrapperProps>`
             default:
                 return css`
                     background-color: ${theme.color.gray};
-                    border-color: ${theme.color.grayDark};
+                    border-color: ${theme.color.darkGray};
                 `;
         }
     }}
