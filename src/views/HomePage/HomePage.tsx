@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Styled from './HomePage.styled';
-import { Button, FilesList, Loading } from '@/components';
+import { Alert, Button, FilesList, Intro, Loading } from '@/components';
 import { BATCH_URL, client } from '@/utils';
 import { FileObject, ResponseDataItems } from '@/types';
 
@@ -8,6 +8,7 @@ export const HomePage: React.FC = () => {
     const apiClient = client();
 
     const [files, setFiles] = React.useState<FileObject[]>([]);
+    const [notFoundFiles, setNotFoundFiles] = React.useState<FileObject[]>([]);
     const [loading, setLoading] = React.useState<boolean>(false);
 
     const handleTestRequests = async () => {
@@ -19,30 +20,30 @@ export const HomePage: React.FC = () => {
             apiClient.get(BATCH_URL, { params: { ids: ['fileid4'] } }),
             apiClient.get(BATCH_URL, { params: { ids: ['fileid5'] } }),
             apiClient.get(BATCH_URL, { params: { ids: ['fileid4', 'fileid5'] } }),
-        ]).then((responses) => {
-            console.log(responses);
+        ])
+            .then((responses) => {
+                console.log(responses);
 
-            for (const response of responses) {
-                if (response.status === 'fulfilled') {
-                    const data: ResponseDataItems = response.value.data;
-                    setLoading(false);
-
-                    setFiles(data.items);
+                for (const response of responses) {
+                    if (response.status === 'fulfilled') {
+                        const data: ResponseDataItems = response.value.data;
+                        setFiles(data.items);
+                        setNotFoundFiles(data.notFoundItems);
+                    }
                 }
-            }
-        });
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     };
-
-    React.useEffect(() => {
-        console.log('files changed');
-    }, [files]);
 
     return (
         <Styled.HomepageWrapper className="home-page">
-            <h2>Test Your Request</h2>
-            <p>here is the requests</p>
+            <Intro />
             {loading && <Loading />}
-            <FilesList files={files} />
+            {files.length > 0 && <FilesList files={files} />}
+            {notFoundFiles.length > 0 &&
+                notFoundFiles.map((file) => <Alert key={file.id} message={`${file.id} Not found`} varient="danger" />)}
             <Button text="Test Reuests" onClick={handleTestRequests} />
         </Styled.HomepageWrapper>
     );
