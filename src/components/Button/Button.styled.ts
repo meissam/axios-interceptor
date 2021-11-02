@@ -9,6 +9,7 @@ export const ButtonWrapper = styled.button`
     outline: none;
     border: none;
     transition: all 0.3s;
+    font-size: ${({ theme }) => theme.typography.fontSize.h4};
 
     &:hover {
         background-color: ${({ theme }) => theme.color.green};

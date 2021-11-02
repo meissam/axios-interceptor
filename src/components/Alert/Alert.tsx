@@ -1,12 +1,15 @@
 import React from 'react';
 import * as Styled from './Alert.styled';
-import { AlertVarients } from '@/types';
 
 type AlertProps = {
     message: React.ReactNode;
-    varient: AlertVarients;
+    varient: 'danger' | 'success';
 };
 
 export const Alert: React.FC<AlertProps> = ({ message, varient }) => {
-    return <Styled.AlertWrapper varient={varient}>{message}</Styled.AlertWrapper>;
+    return (
+        <Styled.AlertWrapper className="alert" varient={varient}>
+            {message}
+        </Styled.AlertWrapper>
+    );
 };

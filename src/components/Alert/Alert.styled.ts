@@ -1,31 +1,23 @@
-import styled, { css } from 'styled-components';
-import { AlertVarients } from '@/types';
+import styled from 'styled-components';
 
 type AlertWrapperProps = {
-    varient: AlertVarients;
+    varient: 'danger' | 'success';
 };
 
 export const AlertWrapper = styled.div<AlertWrapperProps>`
     position: relative;
-    border-width: 1px solid;
     border-radius: ${({ theme }) => theme.borderRadius.sm};
-    ${({ varient, theme }) => {
+    padding: 10px 30px;
+    width: 100%;
+    margin-bottom: 15px;
+    background-color: ${({ varient, theme }) => {
         switch (varient) {
-            case AlertVarients.Success:
-                return css`
-                    background-color: ${theme.color.green};
-                    border-color: ${theme.color.cyan};
-                `;
-            case AlertVarients.Danger:
-                return css`
-                    background-color: ${theme.color.red};
-                    border-color: ${theme.color.dark};
-                `;
+            case 'success':
+                return theme.color.green;
+            case 'danger':
+                return theme.color.red;
             default:
-                return css`
-                    background-color: ${theme.color.gray};
-                    border-color: ${theme.color.darkGray};
-                `;
+                return theme.color.gray;
         }
-    }}
+    }};
 `;

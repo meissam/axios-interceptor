@@ -6,5 +6,9 @@ type ButtonProps = {
     onClick?: () => void;
 };
 export const Button: React.FC<ButtonProps> = ({ text, onClick }) => {
-    return <Styled.ButtonWrapper onClick={onClick}>{text}</Styled.ButtonWrapper>;
+    return (
+        <Styled.ButtonWrapper className="button" onClick={onClick}>
+            {text}
+        </Styled.ButtonWrapper>
+    );
 };
