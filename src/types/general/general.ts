@@ -1,8 +1,3 @@
-export enum AlertVarients {
-    Success = 'primary',
-    Danger = 'danger',
-}
-
 export type RequestsMap = {
     [url: string]: number;
 };
@@ -13,5 +8,5 @@ export type FileObject = {
 
 export type ResponseDataItems = {
     items: FileObject[];
-    notFoundItems?: FileObject[];
+    notFoundItems: FileObject[];
 };
