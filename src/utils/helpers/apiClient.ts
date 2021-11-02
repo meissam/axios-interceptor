@@ -5,6 +5,7 @@ export const client = () => {
     const config: AxiosRequestConfig = {
         url: BASE_API_ADDRESS,
         baseURL: BASE_API_ADDRESS,
+        headers: {},
     };
     const instance = axios.create(config);
     batchInterceptor(instance);
