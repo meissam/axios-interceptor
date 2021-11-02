@@ -1,6 +1,6 @@
-# Happeo Home Assignment (Batch Interceptor)
+# Batch Interceptor
 
-This application was implemented base on Happeo home assignment. The deployed version can be found here: 
+The deployed version can be found here: 
 https://heuristic-galileo-5d25a0.netlify.app/
 
 ![](https://gcdn.pbrd.co/images/15rkryZPYYXb.png)
