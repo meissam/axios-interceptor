@@ -4,6 +4,11 @@ export const GlobalStyles = createGlobalStyle`
 
   html {
     font-size: ${({ theme }) => theme.typography.fontSize.lead};
+    box-sizing: border-box;
+  }
+
+  *,*:before,*:after {
+    box-sizing:inherit
   }
 
   body {
