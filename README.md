@@ -11,6 +11,7 @@ This application was developed by TypeScript, React, Hooks, Styled-Component. Th
 
 
 
+
 ### How to Run the App
 
 1. **Please clone the project.** 
